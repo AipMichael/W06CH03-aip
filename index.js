@@ -1,6 +1,10 @@
 require("dotenv").config();
 const http = require("http");
 
+const { program } = require("commander");
+
+program.version("0.0.1");
+
 const {
   addition,
   substraction,
@@ -90,6 +94,7 @@ server.on("request", (request, response) => {
       response.write(notMyHtml());
     }
   } else {
+    response.statusCode = 404;
     response.write(errorHtml());
   }
   response.end();
