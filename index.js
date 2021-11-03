@@ -45,6 +45,7 @@ const notMyHtml = () =>
   <body>
   <h1>Mario, you've broken my server down with your wrong inputs.</h1>
   
+  <p>(error404)</p>
   <p>Bye</p>
   </body>
 </html>
