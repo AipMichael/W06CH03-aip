@@ -3,8 +3,6 @@ const http = require("http");
 
 const { program } = require("commander");
 
-program.version("0.0.1");
-
 const {
   addition,
   substraction,
@@ -14,7 +12,15 @@ const {
 
 const server = http.createServer();
 
-const port = process.env.SERVER_PORT_ERO || 5000;
+program.option("-p, --port <port>");
+program.parse(process.argv);
+
+let port;
+if (program.opts().port && !Number.isNaN(program.opts().port)) {
+  port = program.opts().port;
+} else {
+  port = process.env.SERVER_PORT_ERO || 5000;
+}
 
 const myHtml = (number1, number2) =>
   `<!DOCTYPE html>
