@@ -51,24 +51,46 @@ const notMyHtml = () =>
 </html>
   `;
 
+const errorHtml = () =>
+  `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This is not a thunk</title>
+  </head>
+  <body>
+  <h1>Congrats! You've broken my server down completely.</h1>
+  <h2>This is ERROR 404</h2>
+  
+  <p>Bye</p>
+  </body>
+</html>
+  `;
+
 server.listen(port, () => {
   console.log(`Escuchando en el puerto ${port}`);
 });
 
 server.on("request", (request, response) => {
   const myUrl = new URL(request.url, `http://${request.headers.host}`);
-  const myUrlValues = myUrl.searchParams.values();
-  const userValues = [];
-  for (const value of myUrlValues) {
-    userValues.push(+value);
-  }
+  if (myUrl.pathname === "/calculator") {
+    const myUrlValues = myUrl.searchParams.values();
+    const userValues = [];
+    for (const value of myUrlValues) {
+      userValues.push(+value);
+    }
 
-  response.setHeader("Content-Type", "text/html");
-  response.statusCode = 200;
-  if (!Number.isNaN(+userValues[0]) && !Number.isNaN(+userValues[1])) {
-    response.write(myHtml(userValues[0], userValues[1]));
+    response.setHeader("Content-Type", "text/html");
+    response.statusCode = 200;
+    if (!Number.isNaN(+userValues[0]) && !Number.isNaN(+userValues[1])) {
+      response.write(myHtml(userValues[0], userValues[1]));
+    } else {
+      response.write(notMyHtml());
+    }
   } else {
-    response.write(notMyHtml());
+    response.write(errorHtml());
   }
   response.end();
 });
