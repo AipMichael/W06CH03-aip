@@ -31,10 +31,10 @@ const myHtml = (number1, number2) =>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>This is not a thunk</title>
   </head>
-  <body>
+  <body style="background-color:#d62598;font-family:verdana;color:white;">
     <h1>The calculator has calculated these values for you</h1>
     <p>Results: </p>
-    <li>${number1} + ${number2} = ${addition(number1, number2)}</li>
+    <li >${number1} + ${number2} = ${addition(number1, number2)}</li>
     <li>${number1} - ${number2} = ${substraction(number1, number2)}</li>
     <li>${number1} * ${number2} = ${multiplication(number1, number2)}</li>
     <li>${number1} / ${number2} = ${division(number1, number2)}</li>
@@ -52,7 +52,7 @@ const notMyHtml = () =>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>This is not a thunk</title>
   </head>
-  <body>
+  <body style="background-color:#d62598;font-family:verdana;color:white;">
   <h1>Mario, you've broken my server down with your wrong inputs.</h1>
   
   <p>(error404)</p>
@@ -70,7 +70,7 @@ const errorHtml = () =>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>This is not a thunk</title>
   </head>
-  <body>
+  <body style="background-color:#d62598;font-family:verdana;color:white;">
   <h1>Congrats! You've broken my server down completely.</h1>
   <h2>This is ERROR 404</h2>
   
